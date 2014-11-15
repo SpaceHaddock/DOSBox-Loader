@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace DosBoxLoader
 {
+	/// <summary>
+	/// Holds information relating to an individual DOSProgram
+	/// </summary>
 	public class DosProgram : INotifyPropertyChanged
 	{
 		string _file_name = "File unset";

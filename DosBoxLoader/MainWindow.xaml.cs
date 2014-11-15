@@ -32,6 +32,7 @@ namespace DosBoxLoader
 
 		public MainWindow()
 		{
+			//Check for dosbox location
 			if(!File.Exists(vm.dosbox_exe_location))
 			{
 				const string default_dosbox_location = @"C:\Program Files (x86)\DOSBox-0.74\DOSBox.exe";
@@ -40,6 +41,8 @@ namespace DosBoxLoader
 				else
 					MessageBox.Show("Couldn't locate DOSBox.exe, please set you DOSBox.exe location before launching a game");
 			}
+
+			//Load previous config
 			if (File.Exists(saveto_filename))
 			{
 				using (StreamReader reader = new StreamReader(saveto_filename))
@@ -54,6 +57,7 @@ namespace DosBoxLoader
 			this.DataContext = vm;
 		}
 
+		//Define location of DOSBox.exe
 		private void SetDosLocation_Button(object sender, RoutedEventArgs e)
 		{
 			var of = new System.Windows.Forms.OpenFileDialog();
@@ -64,9 +68,9 @@ namespace DosBoxLoader
 			SaveToFile();
 		}
 
+		//Add a new DOSProgram
 		private void AddNewExe_Button(object sender, RoutedEventArgs e)
 		{
-
 			var of = new System.Windows.Forms.OpenFileDialog();
 			of.ShowDialog();
 
@@ -78,12 +82,14 @@ namespace DosBoxLoader
 			SaveToFile();
 		}
 
+		//Remove a DOSProgram
 		private void DeleteDosProgram_Button(object sender, RoutedEventArgs e)
 		{
 			vm.programs.Remove((sender as Button).Tag as DosProgram);
 			SaveToFile();
 		}
 
+		//Load up the game to be played
 		private void LoadDosProgram_Button(object sender, RoutedEventArgs e)
 		{
 			Process dos_box = new Process();
@@ -98,6 +104,7 @@ namespace DosBoxLoader
 			System.Windows.Forms.SendKeys.SendWait(String.Format("mount {0} {1}{3}{0}:{3}{2}{3}", "c", dos_program.directory, dos_program.file_name, "{ENTER}"));
 		}
 
+		//Exports the configuration to a textfile when data changes
 		private void SaveToFile()
 		{
 			using (StreamWriter writer = new StreamWriter(saveto_filename))

@@ -1,0 +1,31 @@
+﻿<Window x:Class="DosBoxLoader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DosBoxLoader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+	<StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Text="{Binding dosbox_exe_location}" Margin="5,0,5,0"/>
+			<Button Content="Set dosbox location" Click="SetDosLocation_Button"/>
+		</StackPanel>
+		<Button Content="Add New .exe" Click="AddNewExe_Button"/>
+		<ItemsControl Name="main_control" ItemsSource="{Binding programs}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding file_name}" Width="150"/>
+						<Button Tag="{Binding}" Height="20" Click="LoadDosProgram_Button">
+							<Image Source="Images/Play.png"/>
+						</Button>
+						<Button Tag="{Binding}" Height="20" Click="DeleteDosProgram_Button">
+							<Image Source="Images/Delete.png"/>
+						</Button>
+					</StackPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</StackPanel>
+</Window>

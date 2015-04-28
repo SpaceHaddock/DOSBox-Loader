@@ -85,7 +85,19 @@ namespace DosBoxLoader
 			System.Threading.Thread.Sleep(1000);
 
 			var dos_program = (sender as Button).Tag as DosProgram;
-			System.Windows.Forms.SendKeys.SendWait(String.Format("mount {0} {1}{3}{0}:{3}{2}{3}", "c", dos_program.directory, dos_program.file_name, "{ENTER}"));
+
+			string send_input = String.Format("mount {0} {1}{2}{0}:{2}", "c", dos_program.directory, "{ENTER}");
+			foreach (string s in dos_program.additional_exe)
+				send_input += s + "{ENTER}";
+			send_input += dos_program.file_name + "{ENTER}";
+            System.Windows.Forms.SendKeys.SendWait(send_input);
+		}
+
+		//Opens up the advanced properties of the DosProgram
+		private void DosProgramProperties_Button(object sender, RoutedEventArgs e)
+		{
+			DOSProgramSettings settings_window = new DOSProgramSettings();
+			settings_window.Show();
 		}
 
 		//Exports the configuration to a textfile when data changes

@@ -23,6 +23,9 @@
 						<Button Tag="{Binding}" Height="20" Click="DeleteDosProgram_Button">
 							<Image Source="Images/Delete.png"/>
 						</Button>
+						<Button Tag="{Binding}" Height="20" Click="DosProgramProperties_Button">
+							<Image Source="Images/Settings.png"/>
+						</Button>
 					</StackPanel>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>

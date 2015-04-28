@@ -1,0 +1,8 @@
+Run the exe (using the shortcut if preferred)
+Point the program to your DOSBOX exe (installer available here http://www.dosbox.com/), it automatically assumes it's installed at the default location
+Click "Add new exe" to any dos programs you want, Warcraft 1 is provided as an example to use
+Use the open file dialog to point to the exe you want DOSBOX to load, WAR.EXE for example
+Hit the green + to play the game, DOSBOX will open and after a short delay will have the correct commands entered in to run the DOS program
+Push the red x to remove the game from the list
+This program uses keyboard input, so while the dosprompt is opened don't push keys, you may mess up the inputs
+Enjoy the game!

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace DosBoxLoader
 {
@@ -31,6 +32,18 @@ namespace DosBoxLoader
 				_directory = value;
 				NotifyPropertyChanged("directory");
 			}
+		}
+
+
+		ObservableCollection<string> _additional_exe = new ObservableCollection<string>();
+		public ObservableCollection<string> additional_exe
+		{
+			get { return _additional_exe; }
+			set
+			{
+				_additional_exe = value;
+				NotifyPropertyChanged("additional_exe");
+            }
 		}
 
 		public void InputProgramLocation(string input_file_location)
